@@ -1,30 +1,33 @@
-import sys
 import pygame
+import game_functions as gf
+from ship import Ship
+from settings import Settings
+from target import Target
 
-width = 1200
-height = 800
-bg_color = (200, 200, 255)
 
 pygame.init()
-
-screen = pygame.display.set_mode((width, height))
+settings = Settings()
+screen = pygame.display.set_mode((settings.screen_width, settings.screen_height))
 pygame.display.set_caption('Target Practice')
+
+target = Target(settings, screen)
+ship = Ship(settings, screen)
 
 
 while True:
     # Events
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_q:
-                sys.exit()
+    gf.check_events(ship)
 
-    # Updates
+    # Updates)
+    target.update()
+    ship.update()
 
     # Draw
-    screen.fill(bg_color)
+    screen.fill(settings.screen_color)
+    ship.blitme()
+    target.draw_target()
     pygame.display.flip()
+
 
 
 
