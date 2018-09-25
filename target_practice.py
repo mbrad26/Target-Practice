@@ -19,6 +19,7 @@ while True:
     gf.check_events(ship)
 
     # Updates)
+    gf.target_edges(settings, target)
     target.update()
     ship.update()
 

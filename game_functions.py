@@ -18,3 +18,14 @@ def check_events(ship):
                 ship.moving_up = False
             elif event.key == pygame.K_RIGHT:
                 ship.moving_down = False
+
+
+def target_edges(settings, target):
+    if target.rect.bottom >= target.screen_rect.bottom:
+        settings.change_direction *= -1
+
+    if target.rect.top <= target.screen_rect.top:
+        settings.change_direction *= -1
+
+
+
