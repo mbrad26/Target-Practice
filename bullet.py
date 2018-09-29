@@ -22,6 +22,7 @@ class Bullet(Sprite):
         self.rect.x = self.center
         if self.rect.left >= self.settings.screen_width:
             self.kill()
+            self.settings.missed -= 1
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
